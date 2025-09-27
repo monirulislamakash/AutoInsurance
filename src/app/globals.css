@@ -19,7 +19,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -38,5 +38,2343 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+/* Add By Akash */
+
+.nevmenu {
+  height: 100px;
+  background: #fff !important;
+}
+
+.NavLogoWaper {
+  position: relative;
+  width: 257px;
+  height: auto;
+}
+
+
+Link {
+  text-decoration: none;
+}
+
+.NavButton {
+  display: flex;
+  height: 60px;
+  padding: 0 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 73px;
+  background: #5CA453;
+  box-shadow: 0 8px 15px 0 rgba(11, 34, 69, 0.30);
+  text-decoration: none;
+}
+
+.NavButtonMainText {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  text-transform: capitalize;
+}
+
+.NavButtonSubText {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: 2.53px;
+  text-transform: capitalize;
+}
+
+.HerroSection {
+  width: 100%;
+  height: 765px;
+  position: relative;
+  z-index: 0;
+}
+
+.HerroSectionBG {
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  z-index: -1;
+}
+
+.HerroSectionContent {
+  width: 100%;
+  height: 100%;
+  background: #073b89d1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.HerroSectionContentWaper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.HerroSectionTextAndForm {
+  width: 55%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.HerroSectionContentTitel {
+  color: #FFF;
+  font-family: var(--font-merriweather), serif;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+.HerroSectionContentFrom {
+  width: 85%;
+  height: auto;
+  background: #fff;
+  filter: drop-shadow(0 4px 54px rgba(20, 56, 99, 0.30));
+  border-radius: 13px;
+  padding: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  position: relative;
+}
+
+.HerroSectionContentFromWaterIcon {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+}
+
+
+.HerroSectionContentFromTitel {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  color: #073B89;
+  text-align: center;
+  font-family: var(--font-merriweather), serif;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.HerroSectionContentFromInput {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  padding: 14px 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: -1px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid #BEBEBE;
+  background: #E6EEFA;
+  color: #838383;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0.26px;
+}
+
+.HerroSectionContentFromInput:focus {
+  outline: none;
+}
+
+.HerroSectionContentFromButton {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  padding: 0 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  border-radius: 73px;
+  background: #F6BE00;
+  box-shadow: 0 8px 15px 0 rgba(11, 34, 69, 0.30);
+  border: none;
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 35px;
+  letter-spacing: 0.26px;
+}
+
+.HeroImages {
+  width: 40%;
+  height: auto;
+}
+
+.WeConnectYouInstantly {
+  width: 100%;
+  height: auto;
+  padding: 45px 0px;
+  background: linear-gradient(180deg, rgba(246, 246, 246, 0.00) 0%, rgba(0, 51, 160, 0.05) 100%);
+}
+
+.WeConnectYouInstantlyWaper {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.WeConnectYouInstantlyTitel {
+  color: #0033A0;
+  text-align: center;
+  font-family: Merriweather;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.WeConnectYouInstantlyCardWaper {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.WeConnectYouInstantlyCard {
+  width: 20%;
+  height: auto;
+  position: relative;
+}
+
+/* Step Pages */
+.StepsTopSpacing {
+  height: 24px;
+}
+
+.AreyouCurrentlyInsured {
+  width: 100%;
+  min-height: 60vh;
+  background: #f4fbf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.AreyouCurrentlyInsuredWaper {
+  width: 100%;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.AreyouCurrentlyInsuredProgress {
+  color: #0033A0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.AreyouCurrentlyInsuredTitel {
+  color: #0033A0;
+  font-family: var(--font-merriweather), serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.AreyouCurrentlyInsuredText {
+  color: #073B89;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  /* 155.556% */
+  margin-bottom: 30px;
+}
+
+.AreyouCurrentlyInsuredButtonWaper {
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.AreyouCurrentlyInsuredButton {
+  display: flex;
+  width: 100%;
+  height: 56px;
+  padding: 0 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(11, 34, 69, 0.15);
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.AreyouCurrentlyInsuredActions {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 30px;
+}
+
+.AreyouCurrentlyInsuredPrev {
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.182px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.AreyouCurrentlyInsuredCall {
+  display: flex;
+  width: 223px;
+  height: 45px;
+  padding: 14px 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background: #F6BE00;
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.182px;
+}
+
+.PayLessStress {
+  width: 100%;
+  height: auto;
+  padding: 80px 0px;
+  background: #F6FFF4;
+}
+
+.PayLessStressWaper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.PayLessStressLeft {
+  width: 40%;
+  height: auto;
+}
+
+.PayLessStressRight {
+  width: 50%;
+  height: auto;
+}
+
+.PayLessStressTitel {
+  color: #0033A0;
+  font-family: Merriweather;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 56px;
+  letter-spacing: -0.96px;
+  text-transform: capitalize;
+}
+
+.PayLessStressText {
+  color: var(--Primary-700, #073B89);
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.PayLessStressList {
+  width: 76%;
+  height: auto;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.PayLessStressList ul {
+  width: 76%;
+  height: auto;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+
+.PayLessStressList li {
+  position: relative;
+  padding-left: 25px;
+  /* Adjust this value to control the spacing */
+  line-height: 1.5;
+  /* Optional: Improves vertical alignment */
+  color: var(--Primary-500, #0033A0);
+  font-family: Merriweather;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  padding-bottom: 10px;
+
+}
+
+.PayLessStressList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3%;
+  transform: translateY(0%);
+  /* For perfect vertical centering */
+
+  width: 19px;
+  /* Matches the SVG's intrinsic width */
+  height: 19px;
+  /* Matches the SVG's intrinsic height */
+
+  /* Set the SVG as the background image */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19' height='19' viewBox='0 0 19 19' fill='none'%3E%3Cpath d='M17.1302 8.69286V9.4212C17.1292 11.1284 16.5764 12.7895 15.5543 14.1568C14.5321 15.5241 13.0953 16.5244 11.4582 17.0085C9.82109 17.4925 8.07137 17.4344 6.47 16.8427C4.86862 16.2511 3.50139 15.1577 2.57222 13.7255C1.64304 12.2934 1.20171 10.5992 1.31404 8.89578C1.42636 7.19231 2.08633 5.57079 3.19551 4.27305C4.3047 2.97531 5.80366 2.07088 7.46886 1.69465C9.13405 1.31842 10.8763 1.49055 12.4356 2.18537' stroke='%2378BE20' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6.83789 8.62956L9.21289 11.0046L17.1296 3.08789' stroke='%2378BE20' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Ensures the SVG fits the pseudo-element box */
+}
+
+
+.PayLessStressButtonWaper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.PayLessStressButtonOne {
+  width: 35%;
+  display: flex;
+  height: 50px;
+  padding: 0 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 73px;
+  background: #F6BE00;
+  box-shadow: 0 8px 15px 0 rgba(11, 34, 69, 0.30);
+  color: #0033A0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  text-transform: capitalize;
+}
+
+.PayLessStressButtonTow {
+  color: #78BE20;
+  text-align: center;
+
+  /* Button/Regular */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  /* 24px */
+  text-transform: capitalize;
+}
+
+.HowItWorks {
+  width: 100%;
+  height: auto;
+  padding: 80px 0px;
+  position: relative;
+}
+
+.HowItWorksWaterIcon {
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+  z-index: -1;
+}
+
+.HowItWorksWaper {
+  width: 100%;
+  height: auto;
+}
+
+.HowItWorksTitel {
+  color: #0033A0;
+  text-align: center;
+  font-family: Merriweather;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.HowItWorksText {
+  color: #073B89;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.HowItWorksCardWaper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.HowItWorksCard {
+  width: 32%;
+  height: auto;
+  padding: 25px;
+  border-radius: 13px;
+  background: #FFF;
+  box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.HowItWorksCardTitel {
+  color: #0033A0;
+  font-family: Merriweather;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+  margin: 0px;
+}
+
+.HowItWorksCardText {
+  color: #083B89;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  margin: 0px;
+}
+
+.HowItWorksCardIcon {
+  display: flex;
+  width: 74px;
+  height: 70.611px;
+  padding: 17px 17px 13.611px 17px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #F6BE00;
+}
+
+.RealPeople {
+  width: 100%;
+  height: auto;
+  background: #0033A0;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+.RealPeopleBG {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  z-index: -1;
+}
+
+.RealPeopleWaper {
+  width: 100%;
+  height: auto;
+  padding: 80px 0px;
+}
+
+.RealPeopleTitel {
+  color: #FFF;
+  text-align: center;
+  font-family: Merriweather;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.RealPeopleText {
+  color: #B9D5FF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.RealPeopleCardWaper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.RealPeopleCard {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 23px 43px 25px;
+  justify-content: start;
+  align-items: start;
+  height: auto;
+  padding: 25px;
+  border-radius: 13px;
+  background: #FFF;
+  box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+}
+
+.RealPeopleCardProfileWaper {
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.RealPeopleCardProfile {
+  width: 61px !important;
+  height: 61px !important;
+}
+
+.RealPeopleCardProfileNameTitelWaper {
+  display: flex;
+  flex-direction: column;
+}
+
+.RealPeopleCardProfileName {
+  color: #0033A0;
+  font-family: Merriweather;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.192px;
+  margin: 0px;
+}
+
+.RealPeopleCardProfileTitel {
+  color: var(--Gray-500, #838E9E);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0px;
+}
+
+.RealPeopleCardStar {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 16px;
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.RealPeopleCardText {
+  color: #083B89;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  margin-top: 15px;
+}
+
+.PayLessStressRightTable {
+  width: 100%;
+  height: auto;
+  margin: 24px 0px;
+}
+
+.PayLessStressRightTableIcon {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #78BE20;
+}
+
+.PayLessStressRightTableData {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: start;
+  text-align: center;
+  gap: 10px;
+  margin: 8px 0px;
+  color: #0033A0;
+  font-family: Merriweather;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+  vertical-align: middle;
+}
+
+.PreviewYourSavings {
+  width: 100%;
+  height: auto;
+  background: #F0F5FF;
+  padding: 70px 0px;
+}
+
+.PreviewYourSavingTitel {
+  color: #0033A0;
+  text-align: center;
+  font-family: Merriweather;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.PreviewYourSavingText {
+  color: #073B89;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  margin-bottom: 40px;
+}
+
+
+
+.PreviewYourSavingsTableWaper {
+  width: 70%;
+  height: auto !important;
+  border-radius: 13px;
+  background: #FFF;
+  box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.PreviewYourSavingsTableWaper table {
+  margin: 0px;
+}
+
+.PreviewYourSavingsTableHeader,
+.PreviewYourSavingsTableHeader th {
+  background: #0033A0 !important;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  height: 60px;
+  vertical-align: middle;
+  padding: 20px;
+}
+
+.PreviewYourSavingsTableBody tr {
+  height: 60px;
+  background: #FFF;
+  box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+  vertical-align: middle;
+}
+
+.PreviewYourSavingsTableBody tr {
+  padding: 0px solid #fff;
+}
+
+.PreviewYourSavingsTableBody tr th,
+.PreviewYourSavingsTableBody tr td {
+  padding: 20px;
+  color: #0A0A0A;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.PreviewYourSavingsTableBodyImage {
+  width: 85px !important;
+  height: auto;
+}
+
+.PreviewYourSavingsButtonWaper {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.PreviewYourSavingsButton {
+  display: inline-flex;
+  height: 50px;
+  padding: 0 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  border-radius: 73px;
+  background: #F6BE00;
+  box-shadow: 0 8px 15px 0 rgba(11, 34, 69, 0.30);
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  text-transform: capitalize;
+}
+
+.FrequentlyAsked {
+  width: 100%;
+  height: auto;
+  background: #F6FFF4;
+  padding: 80px 0px;
+}
+
+.FrequentlyAskedTitel {
+  color: #0033A0;
+  text-align: center;
+  font-family: Merriweather;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.FrequentlyAskedText {
+  color: #073B89;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.FrequentlyAskedCardWaper {
+  width: 800px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  width: 100%;
+  height: auto;
+  border-radius: 7px;
+  background: #FFF;
+  box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+  margin: 20px 0px;
+  border-radius: 8px;
+}
+
+.accordion-button {
+  color: #083B89;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.accordion-button::after {
+  color: #083B89;
+}
+
+.FindYourLowestAutoRate {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 0;
+  background: #0033A0;
+}
+
+.FindYourLowestAutoRateBG {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+}
+
+.FindYourLowestAutoRateWAper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 0px;
+}
+
+.FindYourLowestAutoRateTestWaper {
+  width: 50%;
+  height: auto;
+}
+
+.FindYourLowestAutoRateTitel {
+  color: #FFF;
+  font-family: Merriweather;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.FindYourLowestAutoRateText {
+  color: #B9D5FF;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.FindYourLowestAutoRateFromWaper {
+  width: 40%;
+  height: auto;
+}
+
+.FindYourLowestAutoRateFrom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.FindYourLowestAutoRateFromInput {
+  display: flex;
+  height: 60px;
+  padding: 14px 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: -1px;
+  align-self: stretch;
+  border-radius: 10px;
+  border: 1px solid #BEBEBE;
+  background: #E6EEFA;
+  color: #073B89;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 0.26px;
+}
+
+.FindYourLowestAutoRateFromInput:focus {
+  outline: none;
+}
+
+.FindYourLowestAutoRateFromButton {
+  display: flex;
+  height: 60px;
+  padding: 0 32px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  border-radius: 47px;
+  background: linear-gradient(90deg, #64AF55 0.29%, #5AA152 99.74%);
+  box-shadow: 0 2px 6px 0 #FD9A00 inset, 0 9px 17px 0 rgba(25, 72, 16, 0.50);
+  color: #FFF;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 35px;
+  letter-spacing: 0.26px;
+  border: none;
+}
+
+.FindYourLowestAutoRateFromSecure {
+  color: #B9D5FF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: -0.16px;
+}
+
+.NeedQuoteFast {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 0;
+  background: #001f63;
+}
+
+.NeedQuoteFastWaper {
+  width: 100%;
+  height: auto;
+  padding: 80px 0px;
+}
+
+.NeedQuoteFastWaper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.NeedQuoteFastTitel {
+  color: #FFF;
+  text-align: center;
+  font-family: Merriweather;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.NeedQuoteFastText {
+  color: #B9D5FF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.NeedQuoteFastButton {
+  display: flex;
+  width: 384px;
+  height: 70px;
+  padding: 0 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 73px;
+  background: #F6BE00;
+  box-shadow: 0 8px 15px 0 rgba(11, 34, 69, 0.30);
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 35px;
+  letter-spacing: 0.26px;
+}
+
+.Disclaimer {
+  width: 100%;
+  height: auto;
+  padding: 80px 0px;
+}
+
+.DisclaimerText {
+  color: #011733;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.Footer {
+  width: 100%;
+  height: auto;
+  background: #04285C;
+  padding: 50px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.FooterWaterIcon {
+  width: auto;
+  height: 80%;
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+}
+
+.FooterContent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.FooterContentPrivacy {
+  display: flex;
+  gap: 15px;
+  color: #DDE5FF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.FooterContentParsonalInfo {
+  color: #DDE5FF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.13px;
+}
+
+.FooterCopyRight {
+  padding: 17px 0px;
+  background: #001B43;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+
+
+
+
+
+
+
+
+/* Step Two */
+.FormStepTwo {
+  width: 100%;
+  min-height: 60vh;
+  background: #f4fbf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.FormStepTwoWaper {
+  width: 100%;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.FormStepTwoProgress {
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.FormStepTwoTitel {
+  color: #0033A0;
+  font-family: var(--font-merriweather), serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 20px 0 8px 0;
+}
+
+.FormStepTwoSubText {
+  color: #073B89;
+  font-family: Inter;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 30px;
+}
+
+.FormStepTwoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.FormStepTwoButton {
+  display: flex;
+  height: 70px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(11, 34, 69, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Step Two desktop actions */
+
+/* Step Five */
+.FormStepFive {
+  width: 100%;
+  min-height: 60vh;
+  background: #f4fbf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.FormStepFiveWaper {
+  width: 100%;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.FormStepFiveProgress {
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.FormStepFiveTitel {
+  color: #0033A0;
+  font-family: var(--font-merriweather), serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 20px 0 8px 0;
+}
+
+.FormStepFiveSubText {
+  color: #073B89;
+  font-family: Inter;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 30px;
+}
+
+.FormStepFiveGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.FormStepFiveButton {
+  display: flex;
+  height: 60px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(11, 34, 69, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.FormStepFiveButton:hover {
+  border-color: #0033A0;
+  box-shadow: 0 4px 20px rgba(11, 34, 69, 0.2);
+}
+
+/* Step Five desktop actions */
+
+
+
+
+
+/* Step Six */
+.FormStepSix {
+  width: 100%;
+  min-height: 60vh;
+  background: #f4fbf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.FormStepSixWaper {
+  width: 100%;
+  max-width: 700px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.FormStepSixProgress {
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.FormStepSixYear {
+  color: #0033A0;
+  font-family: Merriweather;
+  font-size: 18px;
+  margin-top: 6px;
+}
+
+.FormStepSixTitel {
+  color: #0033A0;
+  font-family: var(--font-merriweather), serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 8px 0 10px 0;
+}
+
+.FormStepSixSubText {
+  color: #073B89;
+  font-family: Inter;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 18px;
+}
+
+.FormStepSixSearch {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 18px auto;
+}
+
+.FormStepSixSearchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.FormStepSixSearchInput {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px 0 38px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  color: #768FC4;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.182px;
+}
+
+.FormStepSixSearchInput:focus {
+  outline: none;
+}
+
+.FormStepSixGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.FormStepSixCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 90px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 30px rgba(11, 34, 69, 0.10);
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.WhatTheDifferentInForm {
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 7px;
+  background: #D7FFD0;
+  color: #23691A;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0.182px;
+  margin-top: 20px;
+}
+
+.FormStepfourteenInputFormWaper {
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 18px;
+}
+
+.FormStepfourteenInputWaper {
+  width: 33%;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 0;
+  border-radius: 13px;
+  background: #FFF;
+  box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+  padding: 0px;
+  padding-right: 20px;
+  overflow: hidden;
+}
+
+.FormStepfourteenInput {
+  width: 90%;
+  height: 100%;
+  border: none;
+  padding-left: 20px;
+  color: #3F3F3F;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0.208px;
+}
+
+.FormStepfourteenInput:focus {
+  outline: none;
+}
+
+.FormStepSevenTeenInputFormWaper {
+  width: 650px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.FormStepSevenTeenInputWaper {
+  width: 50%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.FormStepSevenTeenInput {
+  width: 100%;
+  display: flex;
+  height: 60px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 13px;
+  background: #FFF;
+  box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+  color: #3F3F3F;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0.208px;
+  border: none;
+  padding: 0px 20px
+}
+
+.FormStepSevenTeenInput:focus {
+  outline: none;
+}
+
+.StemNinteenFormWaper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.StepNinteenInputWaper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.StepNinteenInputWaper span {
+  color: #0A0A0A;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  /* 23.4px */
+}
+
+.StepNinteenInput {
+  width: 100%;
+  display: flex;
+  height: 60px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 13px;
+  background: #FFF;
+  box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+  border: none;
+  padding: 0px 20px;
+}
+
+.StepNinteenInput:focus {
+  outline: none;
+}
+
+.PolacyAndTramsTermsWaper {
+  width: 700px;
+  margin-top: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 20px;
+}
+
+.PolacyAndTramsTerms {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  gap: 10px;
+}
+
+.PolacyAndTramsTerms input {
+  border-radius: 2px !important;
+  border: 1px solid #8DA7DD !important;
+  background: #FFF !important;
+  margin-top: 2px;
+}
+
+.PolacyAndTramsTerms span {
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  /* 18px */
+  letter-spacing: 0.156px;
+}
+
+.PolacyAndTramsTermsConfirm {
+  width: 700px;
+  margin-top: 30px;
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: start;
+  letter-spacing: 0.156px;
+}
+
+.SuccessBurronWaper{
+  width:100%;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  margin-top: 40px;
+}
+
+.SuccessBurron {
+  width: 300px;
+  display: flex;
+  height: 60px;
+  padding: 0 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 73px;
+  background: #F6BE00;
+  box-shadow: 0 8px 15px 0 rgba(11, 34, 69, 0.30);
+  text-decoration: none;
+}
+
+.SuccessBurronMainText {
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  /* 27px */
+  text-transform: capitalize;
+}
+
+.SuccessBurronSubText {
+  color: #0033A0;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  /* 18px */
+  letter-spacing: 2.76px;
+  text-transform: capitalize;
+}
+
+/* Mobile */
+
+@media only screen and (max-width: 600px) {
+
+  .NavButtonWaper {
+    width: 50%;
+    height: auto;
+  }
+
+  .nevmenu {
+    height: 70px;
+  }
+
+  .NavButton {
+    width: 100%;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 70px;
+    background: #5CA453;
+    box-shadow: 0 8px 15px 0 rgba(11, 34, 69, 0.30);
+    text-decoration: none;
+    padding: 5px 10px;
+  }
+
+  .NavButtonTextWaper {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+  }
+
+  .NavButtonIcon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .NavButtonMainText {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 2.7vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+
+  .NavButtonSubText {
+    font-size: 1.3vw;
+  }
+
+  .FormStepSixCard {
+    font-size: 2.7vw;
+  }
+
+  .NavLogoWaper {
+    width: 40%;
+    height: auto;
+  }
+
+  .HerroSection {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .HerroSectionContent {
+    width: 100%;
+    height: 100%;
+    background: #073b89d1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0px;
+  }
+
+  .HerroSectionContentWaper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .HerroSectionTextAndForm {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .HerroSectionContentTitel {
+    color: #FFF;
+    font-family: var(--font-merriweather), serif;
+    font-size: 8vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+  }
+
+  .HerroSectionContentFrom {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    filter: drop-shadow(0 4px 54px rgba(20, 56, 99, 0.30));
+    border-radius: 13px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+  }
+
+  .HerroSectionContentFromTitel {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    color: #073B89;
+    text-align: center;
+    font-family: var(--font-merriweather), serif;
+    font-size: 5vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  .HerroSectionContentFromWaterIcon {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    display: none;
+  }
+
+  .HerroSectionContentFromInput {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    padding: 14px 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: -1px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #BEBEBE;
+    background: #E6EEFA;
+    color: #838383;
+    font-family: Inter;
+    font-size: 4vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35px;
+    letter-spacing: 0.26px;
+  }
+
+  .HerroSectionContentFromButton {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    padding: 0 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    border-radius: 73px;
+    background: #F6BE00;
+    box-shadow: 0 8px 15px 0 rgba(11, 34, 69, 0.30);
+    border: none;
+    color: #0033A0;
+    font-family: Inter;
+    font-size: 4.5vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 35px;
+    letter-spacing: 0.26px;
+  }
+
+  .HeroImages {
+    width: 100%;
+    height: auto;
+  }
+
+  .HeroImagesOrg {
+    margin-left: -5%;
+  }
+
+  .WeConnectYouInstantly {
+    width: 100%;
+    height: auto;
+    padding: 40px 0px;
+    background: linear-gradient(180deg, rgba(246, 246, 246, 0.00) 0%, rgba(0, 51, 160, 0.05) 100%);
+  }
+
+  .WeConnectYouInstantlyTitel {
+    font-size: 5vw;
+  }
+
+  .PayLessStress {
+    padding: 40px 0px;
+  }
+
+  .PayLessStressWaper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+
+  .PayLessStressLeft {
+    width: 100%;
+    height: auto;
+  }
+
+  .PayLessStressRight {
+    width: 100%;
+    height: auto;
+  }
+
+  .PayLessStressTitel {
+    color: #0033A0;
+    font-family: Merriweather;
+    font-size: 7vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.96px;
+    text-transform: capitalize;
+  }
+
+  .PayLessStressText {
+    color: var(--Primary-700, #073B89);
+    font-family: Inter;
+    font-size: 4.5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    margin: 15px 0px;
+  }
+
+  .PayLessStressList {
+    width: 100%;
+    height: auto;
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .PayLessStressList li {
+    position: relative;
+    padding-left: 25px;
+    line-height: 1.5;
+    color: var(--Primary-500, #0033A0);
+    font-family: Merriweather;
+    font-size: 3.5vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    padding-bottom: 10px;
+  }
+
+  .PayLessStressButtonWaper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+
+  .PayLessStressButtonOne {
+    width: 100%;
+  }
+
+  .HowItWorks {
+    width: 100%;
+    height: auto;
+    padding: 40px 0px;
+    position: relative;
+  }
+
+  .HowItWorksTitel {
+    color: #0033A0;
+    text-align: center;
+    font-family: Merriweather;
+    font-size: 8vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+
+  .HowItWorksText {
+    color: #073B89;
+    text-align: center;
+    font-family: Inter;
+    font-size: 3.5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  .HowItWorksCardWaper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 30px;
+    flex-direction: column;
+  }
+
+  .HowItWorksCard {
+    width: 100%;
+    height: auto;
+    padding: 25px;
+    border-radius: 13px;
+    background: #FFF;
+    box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .RealPeopleWaper {
+    width: 100%;
+    height: auto;
+    padding: 40px 0px;
+  }
+
+  .RealPeopleTitel {
+    color: #FFF;
+    text-align: center;
+    font-family: Merriweather;
+    font-size: 7vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+
+  .RealPeopleText {
+    color: #B9D5FF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 3.5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  .RealPeopleCard {
+    width: 100%;
+  }
+
+  .RealPeopleCardProfileWaper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .RealPeopleCardStar {
+    margin-top: 10px;
+  }
+
+  .RealPeopleCardText {
+    margin-top: 10px;
+  }
+
+  .PayLessStressRightTableData {
+    text-align: left;
+    font-size: 4vw;
+  }
+
+  .PreviewYourSavings {
+    padding: 40px 0px;
+  }
+
+  .PreviewYourSavingTitel {
+    font-size: 8vw;
+  }
+
+  .PreviewYourSavingText {
+    color: #073B89;
+    text-align: center;
+    font-family: Inter;
+    font-size: 3.7vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 30px;
+  }
+
+  .PreviewYourSavingsTableWaper {
+    width: 100%;
+    height: auto !important;
+    border-radius: 13px;
+    background: #FFF;
+    box-shadow: 0 4px 54px 0 rgba(20, 56, 99, 0.15);
+    margin: 0 auto;
+    overflow: hidden;
+    overflow-x: scroll;
+  }
+
+  .FrequentlyAsked {
+    width: 100%;
+    height: auto;
+    background: #F6FFF4;
+    padding: 40px 0px;
+  }
+
+  .FrequentlyAskedTitel {
+    font-size: 7vw;
+  }
+
+  .FrequentlyAskedText {
+    font-size: 3.5vw;
+  }
+
+  .FrequentlyAskedCardWaper {
+    width: 100%;
+  }
+
+  .accordion-item {
+    margin: 20px 0px;
+  }
+
+  .FindYourLowestAutoRateWAper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0px;
+    flex-direction: column;
+  }
+
+  .FindYourLowestAutoRateTestWaper {
+    width: 100%;
+    height: auto;
+  }
+
+  .FindYourLowestAutoRateFromWaper {
+    width: 100%;
+    height: auto;
+  }
+
+  .FindYourLowestAutoRateTitel {
+    color: #FFF;
+    font-family: Merriweather;
+    font-size: 7vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  .FindYourLowestAutoRateText {
+    color: #B9D5FF;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-size: 3.5vw;
+  }
+
+  .FindYourLowestAutoRateFrom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 30px 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  .FindYourLowestAutoRateFromSecure {
+    color: #B9D5FF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 3.5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.16px;
+  }
+
+  .NeedQuoteFastWaper {
+    gap: 5px;
+    padding: 40px 0px;
+  }
+
+  .NeedQuoteFastTitel {
+    font-size: 7vw;
+    text-align: left;
+  }
+
+  .NeedQuoteFastText {
+    font-size: 4vw;
+    text-align: left;
+  }
+
+  .NeedQuoteFastButton {
+    width: 100%;
+    height: 60px;
+    font-size: 5vw;
+  }
+
+  .Disclaimer {
+    padding: 40px 0px;
+  }
+
+  .FormStepfourteenInputFormWaper {
+    flex-direction: column;
+    width: 100%;
+    height: 180px;
+  }
+
+  .FormStepfourteenInputWaper {
+    width: 100%;
+  }
+
+  .AreyouCurrentlyInsuredButtonWaper {
+    width: 100%;
+  }
+
+  .FormStepSevenTeenInputFormWaper {
+    width: 100%;
+    flex-direction: column;
+    margin-top: 25px;
+  }
+
+  .FormStepSevenTeenInputWaper {
+    width: 100%;
+  }
+
+  .PolacyAndTramsTermsConfirm,
+  .PolacyAndTramsTermsWaper {
+    width: 100%;
+  }
+
+
+
+
+
+}
+
+/* Mobile */
+
+
+@media (max-width: 992px) {
+  .FormStepSixGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .FormStepSixGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .FormStepSixTitel {
+    font-size: 24px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .AreyouCurrentlyInsuredWaper {
+    padding: 24px 16px;
+  }
+
+  .AreyouCurrentlyInsuredTitel {
+    font-size: 24px;
+  }
+
+  .AreyouCurrentlyInsuredButton {
+    height: 52px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .FormStepTwoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .FormStepFiveGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .FormStepTwoGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .FormStepTwoButton {
+    width: 47%;
+    display: flex;
+    height: 60px;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background: #fff;
+    box-shadow: 0 8px 30px rgba(11, 34, 69, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: #0033A0;
+    font-family: Inter;
+    font-size: 3.7vw;
+    font-weight: 500;
+  }
+
+  .FormStepTwoTitel {
+    font-size: 7vw;
+  }
+
+  /* Step Five mobile */
+  .FormStepFiveGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .FormStepFiveTitel {
+    font-size: 24px;
+  }
+
+  .FormStepFiveButton {
+    height: 50px;
+    font-size: 14px;
   }
 }

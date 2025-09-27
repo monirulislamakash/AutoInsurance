@@ -1,14 +1,23 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Merriweather } from "next/font/google";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
+import BootstrapClient from "./BootstrapClient";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Disclaimer from "./components/Disclaimer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -19,8 +28,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${inter.variable} ${merriweather.variable}`}>
+        <BootstrapClient />
+        <Navbar />
         {children}
+        <Disclaimer />
+        <Footer />
       </body>
     </html>
   );
