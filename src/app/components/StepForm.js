@@ -5,18 +5,47 @@ import Image from "next/image";
 import Link from "next/link";
 
 const stepTow = [
-    'Other',
-    '21st Century Insurance',
-    'AAA Insurance',
-    'Allied',
-    'Allstate',
-    'American Family',
-    'American National Insurance',
-    'Amica',
-    'Auto Owners',
-    'Cal Farm Insurance',
-    'Chubb Insurance',
-    'Citizens',
+    "21st Century",
+    "AAA",
+    "AIG",
+    "AIU",
+    "AARP",
+    "Allied",
+    "American Family",
+    "Amica",
+    "CNA",
+    "Cal Farm",
+    "Chubb",
+    "Continental",
+    "Cotton State",
+    "Commerce",
+    "Dairyland",
+    "Direct Auto",
+    "Electric",
+    "Erie",
+    "Esurance",
+    "Farm Bureau",
+    "Farmers",
+    "Foremost",
+    "Gainsco",
+    "GEICO",
+    "Good2go",
+    "Hartford",
+    "High Point",
+    "Infinity",
+    "Kemper",
+    "Liberty Mutual",
+    "Mercury",
+    "Nationwide",
+    "Plymouth Rock",
+    "Progressive",
+    "Safeco",
+    "State Farm",
+    "The General",
+    "Travelers",
+    "USAA",
+    "Not Insured",
+    "Not Currently Listed",
 ]
 const stepThree = [
     'less than 1 year',
@@ -38,23 +67,267 @@ const carYears = [
     1989, 1988, 1987, 1986, 1985
 ]
 const stepSix = [
-    'Acura', 'Aston Martin', 'Audi', 'Azure Dynamics', 'Bentley',
-    'Bugatti', 'Buick', 'BYD', 'Cadillac', 'Chevrolet',
-    'Chrysler', 'BMW', 'BYD', 'Cadillac', 'Chevrolet',
+    "Acura",
+    "Alfa Romeo",
+    "Aston Martin",
+    "Audi",
+    "Bentley",
+    "BMW",
+    "Buick",
+    "Cadillac",
+    "Chevrolet",
+    "Chrysler",
+    "Dodge",
+    "FIAT",
+    "Ford",
+    "Genesis",
+    "GMC",
+    "Honda",
+    "Hyundai",
+    "Infiniti",
+    "Jaguar",
+    "Jeep",
+    "Kia",
+    "Lamborghini",
+    "Land Rover",
+    "Lexus",
+    "Lincoln",
+    "Lotus",
+    "Maserati",
+    "Mazda",
+    "McLaren",
+    "Mercedes-Benz",
+    "Mini",
+    "Mitsubishi",
+    "Nissan",
+    "Polestar",
+    "Porsche",
+    "Ram",
+    "Rolls-Royce",
+    "Subaru",
+    "Tesla",
+    "Toyota",
+    "Volkwagen",
+    "Volvo",
+    "Volkswagen",
+    "Other"
 ]
 const stepEight = ['530e', '530i xDrive', '530i', '530e xDrive', '540i', '540i xDrive', 'I don’t know',]
 const stepNine = ['Commuting or personal use', 'Commute to school', 'Pleasure', 'Business', 'Commercial', 'Rideshare',]
 const stepTen = ['5 Miles', '10 Miles', '15 Miles', '25 Miles', '50 Miles', '75+ Miles',]
-const stepEleven = ['Owned', 'Financed', 'Leased',]
+const stepEleven = ['Own Paid Off', 'Own Financed', 'Leased',]
 const stepTwelve = ['Yes', 'No',]
-const Gender = ['Male', 'Female', 'Female',]
-const stemEignteen = ['High School/GED', 'Bachelor’s Degree', 'Master’s / Doctorate', 'No Diploma']
+const Gender = ['Male', 'Female',]
+const stemEignteen = ["High School Diploma", "Associate Degree", "Bachelors Degree", "Masters Degree", "Doctorate Degree", "Some College", "Some or No High School", "Less than High School", "GED"]
 
 export default function Disclaimer() {
     // Al States
-    const [step, setStep] = useState(1)
+    const [step, setStep] = useState(1);
+    console.log(step);
+    
+    // Date of birth state variables
+    const [dobMonth, setDobMonth] = useState('');
+    const [dobDay, setDobDay] = useState('');
+    const [dobYear, setDobYear] = useState('');
+    
+    const [formData, setFormData] = useState({
+        "currently_insured": "",
+        "current_insurance": "",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "phone": "",
+        "date_of_birth": "2015-07-21",
+        "gender": "",
+        "address": "",
+        "city": "",
+        "state": "",
+        "zip_code": "",
+        "home_owner": "",
+        "married": "",
+        "vehicle_1_year": "",
+        "vehicle_1_make": "",
+        "vehicle_1_model": "",
+        "vehicle_1_trim": "",
+        "vehicle_1_ownership": "",
+        "driver_1_first_name": "",
+        "driver_1_last_name": "",
+        "driver_1_education": "",
+        "driver_1_dob": "",
+
+        'tcpa_text': "",
+        'user_agent':"",
+        'landing_page_url':"",
+        "trustedform_cert_url":"",
+        "ip_address":"",
+    });
+
+    // Function to handle moving to the next step
     const nextStep = () => {
         setStep(prevStep => prevStep + 1);
+    };
+
+    // Function to handle date of birth updates
+    const handleDobUpdate = (type, value) => {
+        // Basic validation and formatting
+        let processedValue = value;
+        
+        // Only allow numeric input and limit length
+        if (type === 'month') {
+            processedValue = value.replace(/\D/g, '').slice(0, 2);
+            if (processedValue && parseInt(processedValue) > 12) {
+                processedValue = '12';
+            }
+        } else if (type === 'day') {
+            processedValue = value.replace(/\D/g, '').slice(0, 2);
+            if (processedValue && parseInt(processedValue) > 31) {
+                processedValue = '31';
+            }
+        } else if (type === 'year') {
+            processedValue = value.replace(/\D/g, '').slice(0, 4);
+        }
+
+        let newMonth = dobMonth;
+        let newDay = dobDay;
+        let newYear = dobYear;
+
+        switch (type) {
+            case 'month':
+                newMonth = processedValue;
+                setDobMonth(processedValue);
+                break;
+            case 'day':
+                newDay = processedValue;
+                setDobDay(processedValue);
+                break;
+            case 'year':
+                newYear = processedValue;
+                setDobYear(processedValue);
+                break;
+        }
+
+        // Format date as YYYY-MM-DD if all components are present and valid
+        if (newMonth && newDay && newYear && 
+            newMonth.length <= 2 && newDay.length <= 2 && newYear.length === 4) {
+            const formattedDate = `${newYear}-${newMonth.padStart(2, '0')}-${newDay.padStart(2, '0')}`;
+            updateFormData('date_of_birth', formattedDate);
+            updateFormData('driver_1_dob', formattedDate);
+        }
+    };
+
+    // Function to handle moving to the previous step
+    const prevStep = () => {
+        setStep(prevStep => prevStep - 1);
+    };
+
+    // Function to update the form data
+    const updateFormData = (field, value) => {
+        setFormData(prevData => ({
+            ...prevData,
+            [field]: value,
+        }));
+    };
+
+    // Function to calculate progress percentage
+    const getProgressPercentage = (currentStep) => {
+        const totalSteps = 22;
+        return Math.round((currentStep / totalSteps) * 100);
+    };
+
+    // Helper: resolve TrustedForm cert URL with short retries (script populates asynchronously)
+    const getTrustedFormCertUrl = async () => {
+        const tryRead = () => {
+            // if (typeof document === 'undefined') return '1';
+            // const byId = document.getElementById('xxTrustedFormCertUrl');
+            // if (byId && 'value' in byId && byId.value) return byId.value;
+            // const byName = document.querySelector('input[name="xxTrustedFormCertUrl"]');
+            // if (byName && 'value' in byName && byName.value) return byName.value;
+            // console.log(byName.value);
+            // return '2';
+            const byId = document.getElementById('xxTrustedFormCertUrl').value;
+            console.log(byId,"Hello===============");
+            
+        };
+        // let attempts = 0;
+        // let value = tryRead();
+        // while (!value && attempts < 10) { // up to ~1s total wait
+        //     await new Promise(r => setTimeout(r, 100));
+        //     value = tryRead();
+        //     attempts++;
+        // }
+        // return value;
+    };
+    
+
+    // Function to submit form data to API (allows field overrides at submit time)
+    const submitFormToAPI = async (overrides = {}) => {
+        try {
+            console.log('🚀 Starting form submission...');
+            // Capture submitter IP address before sending
+            let ipAddress = '';
+            try {
+                const ipRes = await fetch('https://api.ipify.org?format=json');
+                const ipJson = await ipRes.json();
+                ipAddress = ipJson?.ip || '';
+            } catch (e) {
+                console.warn('Unable to fetch IP address:', e);
+            }
+
+            const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+            const landingPageUrl = typeof window !== 'undefined' ? window.location.href : '';
+            const trustedformCertUrl = await getTrustedFormCertUrl() || (formData.trustedform_cert_url || '');
+            const payload = { 
+                ...formData,
+                ...overrides,
+                ip_address: ipAddress, 
+                user_agent: userAgent, 
+                landing_page_url: landingPageUrl,
+                trustedform_cert_url: trustedformCertUrl,
+            };
+            console.log('📋 Form data being sent:', payload);
+
+            const response = await fetch('/api/leadprosper', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+
+            console.log('📡 API Response Status:', response.status);
+            console.log('📄 Full API Response:', result);
+
+            if (result.success) {
+                console.log('✅ PING API Status: SUCCESS');
+                console.log('✅ POST API Status: SUCCESS');
+                console.log('✅ Ping ID received:', result.pingId);
+                console.log('✅ Final API Response:', result.apiResponse);
+                console.log('===========>>>>>>:', result.dic);
+                console.log('🎉 Form submitted successfully!');
+
+                // Show detailed success message
+                // alert(`✅ Form submitted successfully!\n\nPing Status: ✅ SUCCESS\nPost Status: ✅ SUCCESS\nPing ID: ${result.pingId}\n\nCheck console for full details.`);
+                return result;
+            } else {
+                console.log('❌ PING API Status: FAILED');
+                console.log('❌ POST API Status: FAILED');
+                console.error('💥 Form submission failed:', result);
+
+                // Show detailed error message
+                alert(`❌ Form submission failed!\n\nError: ${result.message}\n\nCheck console for full details.`);
+                return null;
+            }
+        } catch (error) {
+            console.log('❌ PING API Status: ERROR');
+            console.log('❌ POST API Status: ERROR');
+            console.error('💥 Network/Connection Error:', error);
+
+            // Show detailed error message
+            alert(`❌ Connection Error!\n\nError: ${error.message}\n\nCheck console for full details.`);
+            return null;
+        }
     };
 
     let MainContent = () => {
@@ -65,15 +338,15 @@ export default function Disclaimer() {
                     <section className='AreyouCurrentlyInsured'>
                         <div className='Container'>
                             <div className='AreyouCurrentlyInsuredWaper'>
-                                <div className='AreyouCurrentlyInsuredProgress'>Progress 20%</div>
+                                <div className='AreyouCurrentlyInsuredProgress'>Progress {getProgressPercentage(1)}%</div>
                                 <h1 className='AreyouCurrentlyInsuredTitel'>Are you currently insured?</h1>
                                 <p className='AreyouCurrentlyInsuredText'>This won’t affect your rates — it just helps us find the right options.</p>
                                 <div className='AreyouCurrentlyInsuredButtonWaper'>
-                                    <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >Yes</Link>
-                                    <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >No</Link>
+                                    <Link className='AreyouCurrentlyInsuredButton' onClick={() => { updateFormData('currently_insured', 'Yes'); nextStep() }} href='' >Yes</Link>
+                                    <Link className='AreyouCurrentlyInsuredButton' onClick={() => { updateFormData('currently_insured', 'No'); nextStep() }} href='' >No</Link>
                                 </div>
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
                                             <path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" />
                                         </svg>
@@ -91,18 +364,18 @@ export default function Disclaimer() {
                     <section className='FormStepTwo'>
                         <div className='Container'>
                             <div className='FormStepTwoWaper'>
-                                <div className='FormStepTwoProgress'>Progress 22%</div>
+                                <div className='FormStepTwoProgress'>Progress {getProgressPercentage(2)}%</div>
                                 <h1 className='FormStepTwoTitel'>What is the name of your current insurer?</h1>
                                 <p className='FormStepTwoSubText'>Select 'Other / Not listed' if you don't see your insurer</p>
 
                                 <div className='FormStepTwoGrid'>
                                     {stepTow.map((name) => (
-                                        <Link key={name} onClick={() => { nextStep() }} href='' className='FormStepTwoButton'>{name}</Link>
+                                        <Link key={name} onClick={() => { updateFormData('current_insurance', name); nextStep() }} href='' className='FormStepTwoButton'>{name}</Link>
                                     ))}
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
                                             <path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" />
                                         </svg>
@@ -120,7 +393,7 @@ export default function Disclaimer() {
                     <section className='FormStepTwo'>
                         <div className='Container'>
                             <div className='FormStepTwoWaper'>
-                                <div className='FormStepTwoProgress'>Progress 25%</div>
+                                <div className='FormStepTwoProgress'>Progress {getProgressPercentage(3)}%</div>
                                 <h1 className='FormStepTwoTitel'>Insurance Details</h1>
                                 <p className='FormStepTwoSubText'>Insured Length</p>
 
@@ -131,7 +404,7 @@ export default function Disclaimer() {
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
                                             <path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" />
                                         </svg>
@@ -149,15 +422,15 @@ export default function Disclaimer() {
                     <section className='AreyouCurrentlyInsured'>
                         <div className='Container'>
                             <div className='AreyouCurrentlyInsuredWaper'>
-                                <div className='AreyouCurrentlyInsuredProgress'>Progress 30%</div>
+                                <div className='AreyouCurrentlyInsuredProgress'>Progress {getProgressPercentage(4)}%</div>
                                 <h1 className='AreyouCurrentlyInsuredTitel'>Do you own or rent your house?</h1>
                                 <p className='AreyouCurrentlyInsuredText'>This can unlock bundled discounts.</p>
                                 <div className='AreyouCurrentlyInsuredButtonWaper'>
-                                    <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >Own</Link>
-                                    <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >Rent</Link>
+                                    <Link className='AreyouCurrentlyInsuredButton' onClick={() => { updateFormData('home_owner', "yes"); nextStep() }} href='' >Own</Link>
+                                    <Link className='AreyouCurrentlyInsuredButton' onClick={() => { updateFormData('home_owner', "no"); nextStep() }} href='' >Rent</Link>
                                 </div>
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
                                             <path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" />
                                         </svg>
@@ -175,18 +448,18 @@ export default function Disclaimer() {
                     <section className='FormStepFive'>
                         <div className='Container'>
                             <div className='FormStepFiveWaper'>
-                                <div className='FormStepFiveProgress'>Progress 20%</div>
+                                <div className='FormStepFiveProgress'>Progress {getProgressPercentage(5)}%</div>
                                 <h1 className='FormStepFiveTitel'>What's your car year?</h1>
                                 <p className='FormStepFiveSubText'>Let's start with your car's year—it helps us get accurate quotes for you.</p>
 
                                 <div className='FormStepFiveGrid'>
                                     {carYears.map((year) => (
-                                        <Link key={year} onClick={() => { nextStep() }} href='' className='FormStepFiveButton'>{year}</Link>
+                                        <Link key={year} onClick={() => { updateFormData('vehicle_1_year', year); nextStep() }} href='' className='FormStepFiveButton'>{year}</Link>
                                     ))}
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
                                             <path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" />
                                         </svg>
@@ -204,7 +477,7 @@ export default function Disclaimer() {
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(6)}%</div>
                                 <div className='FormStepSixYear'>2024</div>
                                 <h1 className='FormStepSixTitel'>Vehicle Make</h1>
                                 <p className='FormStepSixSubText'>Let’s start with your car’s year—it helps us get accurate quotes for you.</p>
@@ -218,7 +491,7 @@ export default function Disclaimer() {
 
                                 <div className='FormStepSixGrid'>
                                     {stepSix.map((make) => (
-                                        <Link key={make} onClick={() => { nextStep() }} href='' className='FormStepSixCard'>
+                                        <Link key={make} onClick={() => { updateFormData('vehicle_1_make', make); nextStep() }} href='' className='FormStepSixCard'>
                                             <div className='FormStepSixCardIcon'>
                                                 <Image src="/caricon.webp" alt="car" width={44} height={24} />
                                             </div>
@@ -228,7 +501,7 @@ export default function Disclaimer() {
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -244,7 +517,7 @@ export default function Disclaimer() {
                     <section className='FormStepFive'>
                         <div className='Container'>
                             <div className='FormStepFiveWaper'>
-                                <div className='FormStepFiveProgress'>Progress 20%</div>
+                                <div className='FormStepFiveProgress'>Progress {getProgressPercentage(7)}%</div>
                                 <h1 className='FormStepFiveTitel'>Vehicle Model</h1>
                                 <p className='FormStepFiveSubText'>Let’s start with your car’s year—it helps us get accurate quotes for you.</p>
 
@@ -257,12 +530,12 @@ export default function Disclaimer() {
 
                                 <div className='FormStepFiveGrid'>
                                     {carYears.map((year) => (
-                                        <Link key={year} onClick={() => { nextStep() }} href='' className='FormStepFiveButton'>{year}</Link>
+                                        <Link key={year} onClick={() => { updateFormData('vehicle_1_model', year); nextStep() }} href='' className='FormStepFiveButton'>{year}</Link>
                                     ))}
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
                                             <path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" />
                                         </svg>
@@ -280,9 +553,9 @@ export default function Disclaimer() {
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(8)}%</div>
                                 <div className='FormStepSixYear'>Audi / 5-Series</div>
-                                <h1 className='FormStepSixTitel'>What’s your car trim?</h1>
+                                <h1 className='FormStepSixTitel'>What's your car trim?</h1>
                                 <p className='FormStepSixSubText'>Let’s start with your car’s year—it helps us get accurate quotes for you.</p>
 
                                 <div className='FormStepSixSearch'>
@@ -294,12 +567,12 @@ export default function Disclaimer() {
 
                                 <div className='AreyouCurrentlyInsuredButtonWaper'>
                                     {stepEight.map((item) => (
-                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >{item}</Link>
+                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => { updateFormData('vehicle_1_trim', item); nextStep() }} href='' >{item}</Link>
                                     ))}
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -315,9 +588,9 @@ export default function Disclaimer() {
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(9)}%</div>
                                 <div className='FormStepSixYear'>Audi / 5-Series</div>
-                                <h1 className='FormStepSixTitel'>What’s the main use of your car?</h1>
+                                <h1 className='FormStepSixTitel'>What's the main use of your car?</h1>
                                 <p className='FormStepSixSubText'>Let’s start with your car’s year—it helps us get accurate quotes for you.</p>
 
                                 <div className='FormStepSixSearch'>
@@ -334,7 +607,7 @@ export default function Disclaimer() {
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -350,7 +623,7 @@ export default function Disclaimer() {
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(10)}%</div>
                                 <div className='FormStepSixYear'>Audi / 5-Series</div>
                                 <h1 className='FormStepSixTitel mb-5'>How many miles do you drive this car daily?</h1>
 
@@ -368,7 +641,7 @@ export default function Disclaimer() {
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -384,18 +657,18 @@ export default function Disclaimer() {
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(11)}%</div>
                                 <div className='FormStepSixYear'>Audi / 5-Series</div>
                                 <h1 className='FormStepSixTitel mb-5'>Do you own or lease this car?</h1>
 
                                 <div className='AreyouCurrentlyInsuredButtonWaper'>
                                     {stepEleven.map((item) => (
-                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >{item}</Link>
+                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => {updateFormData('vehicle_1_ownership', item); nextStep() }} href='' >{item}</Link>
                                     ))}
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -411,7 +684,7 @@ export default function Disclaimer() {
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(12)}%</div>
                                 <div className='FormStepSixYear'>Audi / 5-Series</div>
                                 <h1 className='FormStepSixTitel mb-3'>Would you like to include full coverage?</h1>
 
@@ -424,7 +697,7 @@ export default function Disclaimer() {
                                     What the different coverages mean?
                                 </div>
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -435,44 +708,51 @@ export default function Disclaimer() {
                     </section>
                 );
                 {/* Step Thirteen */ }
-            case 13:
-                return (
-                    <section className='FormStepSix'>
-                        <div className='Container'>
-                            <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
-                                <div className='FormStepSixYear'>Audi / 5-Series</div>
-                                <h1 className='FormStepSixTitel mb-3'>Would you like to add another vehicle?</h1>
+            // case 13:
+            //     return (
+            //         <section className='FormStepSix'>
+            //             <div className='Container'>
+            //                 <div className='FormStepSixWaper'>
+            //                     <div className='FormStepSixProgress'>Progress {getProgressPercentage(13)}%</div>
+            //                     <div className='FormStepSixYear'>Audi / 5-Series</div>
+            //                     <h1 className='FormStepSixTitel mb-3'>Would you like to add another vehicle?</h1>
 
-                                <div className='AreyouCurrentlyInsuredButtonWaper'>
-                                    {stepTwelve.map((item) => (
-                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >{item}</Link>
-                                    ))}
-                                </div>
-                                <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
-                                        Previous
-                                    </Link>
-                                    <Link className='AreyouCurrentlyInsuredCall' href="#">Call for Instant Quotes!</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                )
-            case 14:
+            //                     <div className='AreyouCurrentlyInsuredButtonWaper'>
+            //                         {stepTwelve.map((item) => (
+            //                             <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >{item}</Link>
+            //                         ))}
+            //                     </div>
+            //                     <div className='AreyouCurrentlyInsuredActions'>
+            //                         <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
+            //                             <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
+            //                             Previous
+            //                         </Link>
+            //                         <Link className='AreyouCurrentlyInsuredCall' href="#">Call for Instant Quotes!</Link>
+            //                     </div>
+            //                 </div>
+            //             </div>
+            //         </section>
+            //     )
+            case 13:
                 {/* Step Fourteen */ }
                 return (
                     <section className='FormStepFive'>
                         <div className='Container'>
                             <div className='AreyouCurrentlyInsuredWaper'>
-                                <div className='AreyouCurrentlyInsuredProgress'>Progress 20%</div>
-                                <h1 className='AreyouCurrentlyInsuredTitel'>What’s your date of birth?</h1>
+                                <div className='AreyouCurrentlyInsuredProgress'>Progress {getProgressPercentage(14)}%</div>
+                                <h1 className='AreyouCurrentlyInsuredTitel'>What's your date of birth?</h1>
                                 <p className='AreyouCurrentlyInsuredText'>We ask for these details to find the most accurate prices. Your information in only shared with trusted insurers.</p>
 
-                                <Form className='FormStepfourteenInputFormWaper'>
+                                <Form className='FormStepfourteenInputFormWaper' onSubmit={(e) => { e.preventDefault(); nextStep() }}>
                                     <div className='FormStepfourteenInputWaper'>
-                                        <input type='text' className='FormStepfourteenInput' placeholder='MM' />
+                                        <input 
+                                            type='text' 
+                                            className='FormStepfourteenInput' 
+                                            placeholder='MM' 
+                                            required 
+                                            value={dobMonth}
+                                            onChange={(e) => handleDobUpdate('month', e.target.value)}
+                                        />
                                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
                                             <path d="M4.10352 19.9375H19.2285C19.7755 19.9375 20.3001 19.7202 20.6869 19.3334C21.0737 18.9466 21.291 18.422 21.291 17.875V5.5C21.291 4.95299 21.0737 4.42839 20.6869 4.04159C20.3001 3.6548 19.7755 3.4375 19.2285 3.4375H17.8535V2.0625H16.4785V6.1875H17.8535V4.8125H19.2285C19.4109 4.8125 19.5857 4.88493 19.7147 5.01386C19.8436 5.1428 19.916 5.31766 19.916 5.5V6.875H3.41602V5.5C3.41602 5.31766 3.48845 5.1428 3.61738 5.01386C3.74631 4.88493 3.92118 4.8125 4.10352 4.8125H5.47852V6.1875H6.85352V4.8125H15.791V3.4375H6.85352V2.0625H5.47852V3.4375H4.10352C3.55651 3.4375 3.0319 3.6548 2.64511 4.04159C2.25831 4.42839 2.04102 4.95299 2.04102 5.5V7.5625C2.04102 7.74484 2.11345 7.9197 2.24238 8.04864C2.37131 8.17757 2.54618 8.25 2.72852 8.25H19.916V17.875C19.916 18.0573 19.8436 18.2322 19.7147 18.3611C19.5857 18.4901 19.4109 18.5625 19.2285 18.5625H4.10352C3.92118 18.5625 3.74631 18.4901 3.61738 18.3611C3.48845 18.2322 3.41602 18.0573 3.41602 17.875V8.9375H2.04102V17.875C2.04102 18.422 2.25831 18.9466 2.64511 19.3334C3.0319 19.7202 3.55651 19.9375 4.10352 19.9375Z" fill="#4665A9" />
                                             <path d="M4.79102 9.625H6.16602V11H4.79102V9.625Z" fill="#4665A9" />
@@ -490,7 +770,14 @@ export default function Disclaimer() {
                                         </svg>
                                     </div>
                                     <div className='FormStepfourteenInputWaper'>
-                                        <input type='text' className='FormStepfourteenInput' placeholder='DD' />
+                                        <input 
+                                            type='text' 
+                                            className='FormStepfourteenInput' 
+                                            placeholder='DD' 
+                                            required 
+                                            value={dobDay}
+                                            onChange={(e) => handleDobUpdate('day', e.target.value)}
+                                        />
                                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
                                             <path d="M4.10352 19.9375H19.2285C19.7755 19.9375 20.3001 19.7202 20.6869 19.3334C21.0737 18.9466 21.291 18.422 21.291 17.875V5.5C21.291 4.95299 21.0737 4.42839 20.6869 4.04159C20.3001 3.6548 19.7755 3.4375 19.2285 3.4375H17.8535V2.0625H16.4785V6.1875H17.8535V4.8125H19.2285C19.4109 4.8125 19.5857 4.88493 19.7147 5.01386C19.8436 5.1428 19.916 5.31766 19.916 5.5V6.875H3.41602V5.5C3.41602 5.31766 3.48845 5.1428 3.61738 5.01386C3.74631 4.88493 3.92118 4.8125 4.10352 4.8125H5.47852V6.1875H6.85352V4.8125H15.791V3.4375H6.85352V2.0625H5.47852V3.4375H4.10352C3.55651 3.4375 3.0319 3.6548 2.64511 4.04159C2.25831 4.42839 2.04102 4.95299 2.04102 5.5V7.5625C2.04102 7.74484 2.11345 7.9197 2.24238 8.04864C2.37131 8.17757 2.54618 8.25 2.72852 8.25H19.916V17.875C19.916 18.0573 19.8436 18.2322 19.7147 18.3611C19.5857 18.4901 19.4109 18.5625 19.2285 18.5625H4.10352C3.92118 18.5625 3.74631 18.4901 3.61738 18.3611C3.48845 18.2322 3.41602 18.0573 3.41602 17.875V8.9375H2.04102V17.875C2.04102 18.422 2.25831 18.9466 2.64511 19.3334C3.0319 19.7202 3.55651 19.9375 4.10352 19.9375Z" fill="#4665A9" />
                                             <path d="M4.79102 9.625H6.16602V11H4.79102V9.625Z" fill="#4665A9" />
@@ -508,7 +795,14 @@ export default function Disclaimer() {
                                         </svg>
                                     </div>
                                     <div className='FormStepfourteenInputWaper'>
-                                        <input type='text' className='FormStepfourteenInput' placeholder='YYYY' />
+                                        <input 
+                                            type='text' 
+                                            className='FormStepfourteenInput' 
+                                            placeholder='YYYY' 
+                                            required 
+                                            value={dobYear}
+                                            onChange={(e) => handleDobUpdate('year', e.target.value)}
+                                        />
                                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
                                             <path d="M4.10352 19.9375H19.2285C19.7755 19.9375 20.3001 19.7202 20.6869 19.3334C21.0737 18.9466 21.291 18.422 21.291 17.875V5.5C21.291 4.95299 21.0737 4.42839 20.6869 4.04159C20.3001 3.6548 19.7755 3.4375 19.2285 3.4375H17.8535V2.0625H16.4785V6.1875H17.8535V4.8125H19.2285C19.4109 4.8125 19.5857 4.88493 19.7147 5.01386C19.8436 5.1428 19.916 5.31766 19.916 5.5V6.875H3.41602V5.5C3.41602 5.31766 3.48845 5.1428 3.61738 5.01386C3.74631 4.88493 3.92118 4.8125 4.10352 4.8125H5.47852V6.1875H6.85352V4.8125H15.791V3.4375H6.85352V2.0625H5.47852V3.4375H4.10352C3.55651 3.4375 3.0319 3.6548 2.64511 4.04159C2.25831 4.42839 2.04102 4.95299 2.04102 5.5V7.5625C2.04102 7.74484 2.11345 7.9197 2.24238 8.04864C2.37131 8.17757 2.54618 8.25 2.72852 8.25H19.916V17.875C19.916 18.0573 19.8436 18.2322 19.7147 18.3611C19.5857 18.4901 19.4109 18.5625 19.2285 18.5625H4.10352C3.92118 18.5625 3.74631 18.4901 3.61738 18.3611C3.48845 18.2322 3.41602 18.0573 3.41602 17.875V8.9375H2.04102V17.875C2.04102 18.422 2.25831 18.9466 2.64511 19.3334C3.0319 19.7202 3.55651 19.9375 4.10352 19.9375Z" fill="#4665A9" />
                                             <path d="M4.79102 9.625H6.16602V11H4.79102V9.625Z" fill="#4665A9" />
@@ -525,6 +819,7 @@ export default function Disclaimer() {
                                             <path d="M17.166 15.125H18.541V16.5H17.166V15.125Z" fill="#4665A9" />
                                         </svg>
                                     </div>
+                                    <button type="submit" style={{ display: 'none' }}>Submit</button>
                                 </Form>
 
                                 <div className='securelogoWaper'>
@@ -538,7 +833,7 @@ export default function Disclaimer() {
 
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
                                             <path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" />
                                         </svg>
@@ -550,23 +845,49 @@ export default function Disclaimer() {
                         </div>
                     </section>
                 )
-            case 15:
+            case 14:
                 {/* Step Fifteen */ }
                 return (
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
-                                <h1 className='FormStepSixTitel'>What’s your gender??</h1>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(15)}%</div>
+                                <h1 className='FormStepSixTitel'>What's your gender??</h1>
 
                                 <div className='AreyouCurrentlyInsuredButtonWaper'>
                                     {Gender.map((item) => (
-                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >{item}</Link>
+                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => {updateFormData('gender',item); nextStep()}} href='' >{item}</Link>
                                     ))}
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
+                                        Previous
+                                    </Link>
+                                    <Link className='AreyouCurrentlyInsuredCall' href="#">Call for Instant Quotes!</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                )
+            case 15:
+                {/* Step Sixteen */ }
+                return (
+                    <section className='FormStepSix'>
+                        <div className='Container'>
+                            <div className='FormStepSixWaper'>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(16)}%</div>
+                                <h1 className='FormStepSixTitel'>Are you currently married???</h1>
+                                <p className='AreyouCurrentlyInsuredText'>Some insurers offer lower rates for married drivers.</p>
+                                <div className='AreyouCurrentlyInsuredButtonWaper'>
+                                    {stepTwelve.map((item) => (
+                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => {updateFormData('married',item); nextStep() }} href='' >{item}</Link>
+                                    ))}
+                                </div>
+
+                                <div className='AreyouCurrentlyInsuredActions'>
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -577,56 +898,45 @@ export default function Disclaimer() {
                     </section>
                 )
             case 16:
-                {/* Step Sixteen */ }
-                return (
-                    <section className='FormStepSix'>
-                        <div className='Container'>
-                            <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
-                                <h1 className='FormStepSixTitel'>Are you currently married???</h1>
-                                <p className='AreyouCurrentlyInsuredText'>Some insurers offer lower rates for married drivers.</p>
-                                <div className='AreyouCurrentlyInsuredButtonWaper'>
-                                    {stepTwelve.map((item) => (
-                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >{item}</Link>
-                                    ))}
-                                </div>
-
-                                <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
-                                        Previous
-                                    </Link>
-                                    <Link className='AreyouCurrentlyInsuredCall' href="#">Call for Instant Quotes!</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                )
-            case 17:
                 {/* Step SevenTeen */ }
                 return (
                     <section className='FormStepFive'>
                         <div className='Container'>
                             <div className='AreyouCurrentlyInsuredWaper'>
-                                <div className='AreyouCurrentlyInsuredProgress'>Progress 20%</div>
-                                <h1 className='AreyouCurrentlyInsuredTitel'>What’s your name?</h1>
-                                <Form className='FormStepSevenTeenInputFormWaper'>
+                                <div className='AreyouCurrentlyInsuredProgress'>Progress {getProgressPercentage(17)}%</div>
+                                <h1 className='AreyouCurrentlyInsuredTitel'>What's your name?</h1>
+                                <Form className='FormStepSevenTeenInputFormWaper' onSubmit={(e) => { e.preventDefault(); nextStep() }}>
                                     <div className='FormStepSevenTeenInputWaper'>
                                         <span>
                                             First Name
                                         </span>
-                                        <input type='text' className='FormStepSevenTeenInput' placeholder='First name' />
+                                        <input
+                                            type='text'
+                                            className='FormStepSevenTeenInput'
+                                            placeholder='First name'
+                                            required
+                                            value={formData.first_name}
+                                            onChange={(e) => {updateFormData('first_name', e.target.value); updateFormData('driver_1_first_name', e.target.value);}}
+                                        />
                                     </div>
                                     <div className='FormStepSevenTeenInputWaper'>
                                         <span>
                                             Last Name
                                         </span>
-                                        <input type='text' className='FormStepSevenTeenInput' placeholder='Last name' />
+                                        <input
+                                            type='text'
+                                            className='FormStepSevenTeenInput'
+                                            placeholder='Last name'
+                                            required
+                                            value={formData.last_name}
+                                            onChange={(e) => {updateFormData('last_name', e.target.value); updateFormData('driver_1_last_name', e.target.value);}}
+                                        />
                                     </div>
+                                    <button type="submit" style={{ display: 'none' }}>Submit</button>
                                 </Form>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
                                             <path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" />
                                         </svg>
@@ -638,23 +948,79 @@ export default function Disclaimer() {
                         </div>
                     </section>
                 )
-            case 18:
+            case 17:
                 {/* Step Eighteen */ }
                 return (
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
-                                <h1 className='FormStepSixTitel mb-4'>What’s your highest level of education?</h1>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(18)}%</div>
+                                <h1 className='FormStepSixTitel mb-4'>What's your highest level of education?</h1>
 
                                 <div className='AreyouCurrentlyInsuredButtonWaper'>
                                     {stemEignteen.map((item) => (
-                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => { nextStep() }} href='' >{item}</Link>
+                                        <Link className='AreyouCurrentlyInsuredButton' onClick={() => {updateFormData('driver_1_education', item); nextStep() }} href='' >{item}</Link>
                                     ))}
                                 </div>
 
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
+                                        Previous
+                                    </Link>
+                                    <Link className='AreyouCurrentlyInsuredCall' href="#">Call for Instant Quotes!</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                )
+            case 18:
+                {/* Step Ninteen */ }
+                return (
+                    <section className='FormStepSix'>
+                        <div className='Container'>
+                            <div className='FormStepSixWaper'>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(19)}%</div>
+                                <h1 className='FormStepSixTitel'>What is your address</h1>
+                                <p className='AreyouCurrentlyInsuredText'>Used only to find local insurers — never shared for marketing.</p>
+
+                                <Form className='StemNinteenFormWaper' onSubmit={(e) => { e.preventDefault(); nextStep() }}>
+                                    <div className='StepNinteenInputWaper'>
+                                        <span>
+                                            Address
+                                        </span>
+                                        <input type="text" className='StepNinteenInput' placeholder='Address' onChange={(e) => {updateFormData('address', e.target.value);}} required />
+                                    </div>
+                                    <div className='StepNinteenInputWaper'>
+                                        <span>
+                                            City
+                                        </span>
+                                        <input type="text" className='StepNinteenInput' placeholder='City' onChange={(e) => {updateFormData('city', e.target.value);}} required />
+                                    </div>
+                                    <div className='StepNinteenInputWaper'>
+                                        <span>
+                                            State
+                                        </span>
+                                        <input type="text" className='StepNinteenInput' placeholder='State' onChange={(e) => {updateFormData('state', e.target.value);}} required />
+                                    </div>
+                                    <div className='StepNinteenInputWaper'>
+                                        <span>
+                                            Zip
+                                        </span>
+                                        <input type="number" className='StepNinteenInput' placeholder='Zip' onChange={(e) => {updateFormData('zip_code', e.target.value);}} required />
+                                    </div>
+                                    <button type="submit" style={{ display: 'none' }}>Submit</button>
+                                </Form>
+                                <div className='securelogoWaper'>
+                                    <Image
+                                        src="/securelogo.webp"
+                                        className='securelogo mt-4'
+                                        width={176}
+                                        height={31}
+                                    />
+                                </div>
+                                <div className='AreyouCurrentlyInsuredActions'>
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -665,40 +1031,30 @@ export default function Disclaimer() {
                     </section>
                 )
             case 19:
-                {/* Step Ninteen */ }
+                {/* Step Twontee */ }
                 return (
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(20)}%</div>
                                 <h1 className='FormStepSixTitel'>What is your address</h1>
                                 <p className='AreyouCurrentlyInsuredText'>Used only to find local insurers — never shared for marketing.</p>
 
-                                <Form className='StemNinteenFormWaper'>
+                                <Form className='StemNinteenFormWaper' onSubmit={(e) => { e.preventDefault(); nextStep() }}>
                                     <div className='StepNinteenInputWaper'>
                                         <span>
-                                            Address
+                                            Email
                                         </span>
-                                        <input type="text" className='StepNinteenInput' placeholder='Address' />
+                                        <input
+                                            type="email"
+                                            className='StepNinteenInput'
+                                            placeholder='Email Address '
+                                            required
+                                            value={formData.email}
+                                            onChange={(e) => updateFormData('email', e.target.value)}
+                                        />
                                     </div>
-                                    <div className='StepNinteenInputWaper'>
-                                        <span>
-                                            City
-                                        </span>
-                                        <input type="text" className='StepNinteenInput' placeholder='City' />
-                                    </div>
-                                    <div className='StepNinteenInputWaper'>
-                                        <span>
-                                            State
-                                        </span>
-                                        <input type="text" className='StepNinteenInput' placeholder='State' />
-                                    </div>
-                                    <div className='StepNinteenInputWaper'>
-                                        <span>
-                                            Zip
-                                        </span>
-                                        <input type="text" className='StepNinteenInput' placeholder='Zip' />
-                                    </div>
+                                    <button type="submit" style={{ display: 'none' }}>Submit</button>
                                 </Form>
                                 <div className='securelogoWaper'>
                                     <Image
@@ -709,7 +1065,7 @@ export default function Disclaimer() {
                                     />
                                 </div>
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -720,60 +1076,40 @@ export default function Disclaimer() {
                     </section>
                 )
             case 20:
-                {/* Step Twontee */ }
-                return (
-                    <section className='FormStepSix'>
-                        <div className='Container'>
-                            <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 20%</div>
-                                <h1 className='FormStepSixTitel'>What is your address</h1>
-                                <p className='AreyouCurrentlyInsuredText'>Used only to find local insurers — never shared for marketing.</p>
-
-                                <Form className='StemNinteenFormWaper'>
-                                    <div className='StepNinteenInputWaper'>
-                                        <span>
-                                            Email
-                                        </span>
-                                        <input type="text" className='StepNinteenInput' placeholder='Email Address ' />
-                                    </div>
-                                </Form>
-                                <div className='securelogoWaper'>
-                                    <Image
-                                        src="/securelogo.webp"
-                                        className='securelogo mt-4'
-                                        width={176}
-                                        height={31}
-                                    />
-                                </div>
-                                <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
-                                        Previous
-                                    </Link>
-                                    <Link className='AreyouCurrentlyInsuredCall' href="#">Call for Instant Quotes!</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                )
-            case 21:
                 {/* Step Twonteeone */ }
                 return (
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 100%</div>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(21)}%</div>
                                 <h1 className='FormStepSixTitel'>What is your address</h1>
                                 <p className='AreyouCurrentlyInsuredText'>Used only to find local insurers — never shared for marketing.</p>
 
-                                <Form className='StemNinteenFormWaper'>
+                                <Form className='StemNinteenFormWaper' onSubmit={async (e) => {
+                                    e.preventDefault();
+                                    const tcpaText = "By checking this box, I confirm my agreement with this website's Privacy Policy and Terms and Conditions, which contains a mandatory arbitration provision. By checking this box, I confirm my agreement with the terms shown below the Submit button.";
+                                    const result = await submitFormToAPI({ tcpa_text: tcpaText });
+                                    const tf = await getTrustedFormCertUrl();
+                                    if (result) {
+                                        nextStep();
+                                    }
+                                }}>
                                     <div className='StepNinteenInputWaper'>
                                         <span>
                                             Phone
                                         </span>
-                                        <input type="text" className='StepNinteenInput' placeholder='Phone ' />
+                                        <input
+                                            type="number"
+                                            className='StepNinteenInput'
+                                            placeholder='Phone'
+                                            required
+                                            value={formData.phone}
+                                            onChange={(e) => updateFormData('phone', e.target.value)}
+                                        />
+                                        <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl"/>
                                     </div>
-                                </Form>
+                                    <button type="submit" style={{ display: 'none' }}>Submit</button>
+                                
                                 <div className='securelogoWaper'>
                                     <Image
                                         src="/securelogo.webp"
@@ -784,20 +1120,21 @@ export default function Disclaimer() {
                                 </div>
                                 <div className='PolacyAndTramsTermsWaper'>
                                     <div className='PolacyAndTramsTerms'>
-                                        <input clasclassNames="form-check-input" type="checkbox" value="" id="checkDefault" />
+                                        <input className="form-check-input" type="checkbox" value="" id="checkDefault" required />
                                         <span>
                                             By checking this box, I confirm my agreement with this website's <Link href="#">Privacy Policy</Link> and <Link href="#">Terms and Conditions</Link>, which contains a mandatory arbitration provision.
                                         </span>
                                     </div>
                                     <div className='PolacyAndTramsTerms'>
-                                        <input clasclassNames="form-check-input" type="checkbox" value="" id="checkDefault" />
+                                        <input className="form-check-input" type="checkbox" value="" id="checkDefault" required />
                                         <span>
                                             By checking this box, I confirm my agreement with the terms shown below the Submit button.
                                         </span>
                                     </div>
                                 </div>
+                                </Form>
                                 <div className='AreyouCurrentlyInsuredActions'>
-                                    <Link className='AreyouCurrentlyInsuredPrev' href="#">
+                                    <Link className='AreyouCurrentlyInsuredPrev' onClick={() => { prevStep() }} href="#">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none"><path d="M0.499718 5.49998C0.499718 5.24398 0.597687 4.98794 0.792687 4.79294L4.79269 0.792945C5.18369 0.401945 5.81575 0.401945 6.20675 0.792945C6.59775 1.18394 6.59775 1.81601 6.20675 2.20701L2.91378 5.49998L6.20675 8.79294C6.59775 9.18394 6.59775 9.81601 6.20675 10.207C5.81575 10.598 5.18369 10.598 4.79269 10.207L0.792687 6.20701C0.597687 6.01201 0.499718 5.75598 0.499718 5.49998Z" fill="#0033A0" /></svg>
                                         Previous
                                     </Link>
@@ -811,13 +1148,13 @@ export default function Disclaimer() {
                         </div>
                     </section>
                 )
-            case 22:
+            case 21:
                 {/* Success Step */ }
                 return (
                     <section className='FormStepSix'>
                         <div className='Container'>
                             <div className='FormStepSixWaper'>
-                                <div className='FormStepSixProgress'>Progress 100%</div>
+                                <div className='FormStepSixProgress'>Progress {getProgressPercentage(22)}%</div>
                                 <div className='FormStepSixYear mt-4 mb-4'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="94" height="94" viewBox="0 0 94 94" fill="none">
                                         <path d="M94 47C94 72.9574 72.9574 94 47 94C21.0426 94 0 72.9574 0 47C0 21.0426 21.0426 0 47 0C72.9574 0 94 21.0426 94 47Z" fill="#0033A0" />

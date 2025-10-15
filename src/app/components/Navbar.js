@@ -2,6 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Navbar() {
+  function getRandomIntInclusive(e, t) {
+    return e = Math.ceil(e),
+      t = Math.floor(t),
+      Math.floor(Math.random() * (t - e + 1)) + e
+  }
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary nevmenu">
       <div className="container">
@@ -75,7 +80,7 @@ export default function Navbar() {
                   <circle opacity="0.32" cx="6.25" cy="6.5" r="6" fill="#F6BE00" />
                   <circle cx="6.25" cy="6.5" r="3" fill="#F6BE00" />
                 </svg>
-                10 agents Available
+                {getRandomIntInclusive(3, 10)} agents Available
               </div>
             </div>
           </Link>

@@ -2,6 +2,7 @@
   "name": "auto_app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,6 +10,7 @@
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
+    "axios": "^1.12.2",
     "bootstrap": "^5.3.8",
     "next": "15.5.3",
     "react": "19.1.0",
